@@ -127,7 +127,7 @@ static void __initbind_baseprjevent() {
 #ifdef ANDROID
 	mars::baseevent::addLoadModule(kLibName);
 #endif
-
+    //将信号同名为func的函数连接
     GetSignalOnCreate().connect(&onCreate);
     GetSignalOnDestroy().connect(&onDestroy);
     GetSignalOnSingalCrash().connect(&onSingalCrash);

@@ -181,12 +181,14 @@ bool LogCrypt::GetPeriodLogs(const char* const _log_path, int _begin_hour, int _
     
     while (!feof(file) && !ferror(file)) {
         
+        //验证长度
         if ((long)(ftell(file) + GetHeaderLen() + GetTailerLen()) > file_size) {
             snprintf(msg, sizeof(msg), "ftell(file) + __GetHeaderLen() + sizeof(kMagicEnd)) > file_size error");
             break;
         }
         
         long before_len = ftell(file);
+        //验证开头字符串
         if (GetHeaderLen() != fread(header_buff, 1, GetHeaderLen(), file)) {
             snprintf(msg, sizeof(msg), "fread(buff.Ptr(), 1, __GetHeaderLen(), file) error:%s, before_len:%ld.", strerror(ferror(file)), before_len);
             break;

@@ -27,12 +27,13 @@
 @end
 
 @interface NetworkStatus : NSObject {
-	__unsafe_unretained id<NetworkStatusDelegate> m_delNetworkStatus;
+    __unsafe_unretained id<NetworkStatusDelegate> m_delNetworkStatus;
 }
 
 + (NetworkStatus*)sharedInstance;
-
+//启动探测网络
 -(void) Start:(__unsafe_unretained id<NetworkStatusDelegate>)delNetworkStatus;
+//停止网络探测
 -(void) Stop;
 -(void) ChangeReach;
 

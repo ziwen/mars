@@ -69,7 +69,7 @@
 		1FDE37E01DE5DC7900CAC712 /* CGITask.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE37DF1DE5DC7900CAC712 /* CGITask.mm */; };
 		4BDBD14B1E07F611006C62F5 /* NetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBD14A1E07F611006C62F5 /* NetworkStatus.m */; };
 		4BDBD16C1E0912AD006C62F5 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB577871CE20FA300ADCF8C /* libresolv.9.tbd */; };
-		4BDBD16D1E0912BE006C62F5 /* mars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F26718B1DD2B115003F00A1 /* mars.framework */; };
+		924DA17E1E84151100E09830 /* libmars-open-iphone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 924DA17D1E8414F600E09830 /* libmars-open-iphone.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +86,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1FB576ED1CE209A500ADCF8C;
 			remoteInfo = iOSDemo;
+		};
+		924DA17C1E8414F600E09830 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DA1711E8414F500E09830 /* mars-open-iphone.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3170A027177887B0004F5DDA;
+			remoteInfo = "mars-open-iphone";
+		};
+		924DA17F1E84151800E09830 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924DA1711E8414F500E09830 /* mars-open-iphone.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3170A026177887B0004F5DDA;
+			remoteInfo = "mars-open-iphone";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -180,7 +194,6 @@
 		1F244E711DE6E831005D1BAC /* NetworkEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkEvent.h; sourceTree = "<group>"; };
 		1F244E721DE6E831005D1BAC /* NetworkEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkEvent.m; sourceTree = "<group>"; };
 		1F244EAE1DE717E8005D1BAC /* UINotifyDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UINotifyDelegate.h; path = Bussiness/UINotifyDelegate.h; sourceTree = "<group>"; };
-		1F26718B1DD2B115003F00A1 /* mars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = mars.framework; path = Kernel/MarsLib/mars.framework; sourceTree = "<group>"; };
 		1F2671C31DD2BD05003F00A1 /* log_crypt.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log_crypt.cc; sourceTree = "<group>"; };
 		1F2671C41DD2BD05003F00A1 /* log_crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log_crypt.h; sourceTree = "<group>"; };
 		1F2671C61DD2C227003F00A1 /* shortlink_packer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shortlink_packer.cc; sourceTree = "<group>"; };
@@ -226,6 +239,7 @@
 		1FDE37DF1DE5DC7900CAC712 /* CGITask.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CGITask.mm; path = Bussiness/CGITask.mm; sourceTree = "<group>"; };
 		4BDBD1491E07F611006C62F5 /* NetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkStatus.h; path = Bussiness/NetworkStatus.h; sourceTree = "<group>"; };
 		4BDBD14A1E07F611006C62F5 /* NetworkStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkStatus.m; path = Bussiness/NetworkStatus.m; sourceTree = "<group>"; };
+		924DA1711E8414F500E09830 /* mars-open-iphone.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "mars-open-iphone.xcodeproj"; path = "../../../mars/mars-open-iphone.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BDBD16D1E0912BE006C62F5 /* mars.framework in Frameworks */,
+				924DA17E1E84151100E09830 /* libmars-open-iphone.a in Frameworks */,
 				4BDBD16C1E0912AD006C62F5 /* libresolv.9.tbd in Frameworks */,
 				1FB577861CE20F7D00ADCF8C /* SystemConfiguration.framework in Frameworks */,
 				1FB577821CE20F1400ADCF8C /* libz.tbd in Frameworks */,
@@ -351,6 +365,7 @@
 		1FB576E51CE209A500ADCF8C = {
 			isa = PBXGroup;
 			children = (
+				924DA1711E8414F500E09830 /* mars-open-iphone.xcodeproj */,
 				1FAEF21E1DEE7A39002F3AA6 /* Component */,
 				1FDE37AF1DE5D27000CAC712 /* Proto */,
 				1FB577321CE20C1900ADCF8C /* Framework */,
@@ -450,7 +465,6 @@
 		1FB577321CE20C1900ADCF8C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				1F26718B1DD2B115003F00A1 /* mars.framework */,
 				1FB577871CE20FA300ADCF8C /* libresolv.9.tbd */,
 				1FB577851CE20F7D00ADCF8C /* SystemConfiguration.framework */,
 				1FB577811CE20F1400ADCF8C /* libz.tbd */,
@@ -498,6 +512,14 @@
 			path = Proto;
 			sourceTree = "<group>";
 		};
+		924DA1721E8414F500E09830 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				924DA17D1E8414F600E09830 /* libmars-open-iphone.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -513,6 +535,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				924DA1801E84151800E09830 /* PBXTargetDependency */,
 			);
 			name = iOSDemo;
 			productName = iOSDemo;
@@ -592,6 +615,12 @@
 			mainGroup = 1FB576E51CE209A500ADCF8C;
 			productRefGroup = 1FB576EF1CE209A500ADCF8C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 924DA1721E8414F500E09830 /* Products */;
+					ProjectRef = 924DA1711E8414F500E09830 /* mars-open-iphone.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1FB576ED1CE209A500ADCF8C /* iOSDemo */,
@@ -600,6 +629,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		924DA17D1E8414F600E09830 /* libmars-open-iphone.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libmars-open-iphone.a";
+			remoteRef = 924DA17C1E8414F600E09830 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1FB576EC1CE209A500ADCF8C /* Resources */ = {
@@ -733,6 +772,11 @@
 			target = 1FB576ED1CE209A500ADCF8C /* iOSDemo */;
 			targetProxy = 1FB577131CE209A500ADCF8C /* PBXContainerItemProxy */;
 		};
+		924DA1801E84151800E09830 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "mars-open-iphone";
+			targetProxy = 924DA17F1E84151800E09830 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -847,6 +891,7 @@
 					"$(PROJECT_DIR)/Kernel",
 					"$(PROJECT_DIR)/Kernel/MarsLib",
 					"$(PROJECT_DIR)/Proto",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iOSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -868,6 +913,7 @@
 					"$(PROJECT_DIR)/Kernel",
 					"$(PROJECT_DIR)/Kernel/MarsLib",
 					"$(PROJECT_DIR)/Proto",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iOSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

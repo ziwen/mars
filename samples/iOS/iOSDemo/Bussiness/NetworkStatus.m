@@ -55,24 +55,27 @@ static NetworkStatus * sharedSingleton = nil;
     m_delNetworkStatus = delNetworkStatus;
     
     if (g_Reach == nil) {
+        //创建零地址，0.0.0.0的地址表示查询本机的网络连接状态
         struct sockaddr_in zeroAddress;
         bzero(&zeroAddress, sizeof(zeroAddress));
         zeroAddress.sin_len = sizeof(zeroAddress);
         zeroAddress.sin_family = AF_INET;
         g_Reach = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (struct sockaddr *)&zeroAddress);
     }
-
-  
+    
+    //SCNetworkReachabilitySetCallback函数为指定一个target（此处为reachabilityRef，即www.apple.com,在reachabilityWithHostName里设置的）
+    //当设备对于这个target链接状态发生改变时(比如断开链接，或者重新连上)，则回调reachabilityCallback函数，
     SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
     if(SCNetworkReachabilitySetCallback(g_Reach, ReachCallback, &context)) {
+        //指定一个runloop给指定的target
         if(!SCNetworkReachabilityScheduleWithRunLoop(g_Reach, CFRunLoopGetCurrent(), kCFRunLoopCommonModes)) {
-
+            
             SCNetworkReachabilitySetCallback(g_Reach, NULL, NULL);
             return;
         }
     }
     
-
+    
     
 }
 
@@ -83,23 +86,23 @@ static NetworkStatus * sharedSingleton = nil;
         CFRelease(g_Reach);
         g_Reach = nil;
     }
-
+    
     m_delNetworkStatus = nil;
 }
 
 -(void) ChangeReach {
     
     SCNetworkConnectionFlags connFlags;
-
+    //获得连接的标志
     if(!SCNetworkReachabilityGetFlags(g_Reach, &connFlags)) {
         return;
     }
-   
+    
     if(m_delNetworkStatus != nil) {
         [m_delNetworkStatus ReachabilityChange:connFlags];
     }
-
-
+    
+    
 }
 
 @end

@@ -17,12 +17,14 @@
  *      Author: yerungui
  */
 
+
 #include "mars/baseevent/baseprjevent.h"
 
 boost::signals2::signal<void ()>& GetSignalOnCreate()
 {
-	static boost::signals2::signal<void ()> SignalOnCreate;
-	return SignalOnCreate;
+    //定义一个信号sig，其返回值为void，参数为void
+    static boost::signals2::signal<void ()> SignalOnCreate;
+    return SignalOnCreate;
 }
 
 boost::signals2::signal<void ()>& GetSignalOnDestroy()
