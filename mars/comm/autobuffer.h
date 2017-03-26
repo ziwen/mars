@@ -18,6 +18,10 @@
 #include <sys/types.h>
 #include <string.h>
 
+/*
+ *  autobuffer.cc/.h 它用于写入、读取一块 可变长度 的内存区，它的长度会适应刷入的数据，并且 没有尾部的额外空数据 ；
+ */
+
 class AutoBuffer {
   public:
     enum TSeek {

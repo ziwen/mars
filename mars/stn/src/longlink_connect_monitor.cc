@@ -35,6 +35,11 @@
 #include "longlink_speed_test.h"
 #include "net_source.h"
 
+/*
+ *  长连接的连接频率，综合耗电量，流量，网络高可用，用户行为等因素进行综合考虑的
+ *
+ */
+
 using namespace mars::stn;
 using namespace mars::app;
 

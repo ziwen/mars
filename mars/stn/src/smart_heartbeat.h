@@ -28,7 +28,9 @@
 #include "mars/stn/config.h"
 
 #include "special_ini.h"
-
+/*
+ *为了尽量减少频繁的唤醒手机，引入了智能心跳
+ */
 enum HeartbeatReportType {
     kReportTypeCompute            = 1,        // report info of compute smart heartbeat
     kReportTypeSuccRate           = 2,    // report succuss rate when smart heartbeat is stabled

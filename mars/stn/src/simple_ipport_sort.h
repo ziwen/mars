@@ -29,6 +29,11 @@
 #include "mars/comm/tinyxml2.h"
 #include "mars/comm/tickcount.h"
 #include "mars/stn/stn.h"
+/*
+ *基础网络优化：
+ 常规的网络能力，例如 DNS 防劫持、动态 IP 下发、就近接入、容灾恢复等，在这一阶段得到逐步的建设与完善。除此之外，Mars 的网络模块是基于
+ socket 层的网络解决方案，在缺失大而全的 HTTP 能力的同时，却可以将优化做到更细致，细致到连接策略、连接超时、多级读写超时、收发策略等每个网络过程中。例如，当遇到弱网络下连通率较低，或者某些连通率不好的的服务器影响使用时，我们使用了复合连接(代码见complexconnect.cc)和 IP 排序(代码见simple_ipport_sort.cc)的方案很好的应对这两个问题。
+ */
 
 namespace mars {
 namespace stn {

@@ -21,6 +21,9 @@
 
 #include <sys/types.h>
 #include <string.h>
+/*
+ * ptrbuffer.cc/.h 它用于写入、读取一块 固定长度 的内存区；
+ */
 
 class PtrBuffer {
   public:
