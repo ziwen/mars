@@ -29,6 +29,7 @@ class Condition {
   public:
     Condition()
         : condition_(), mutex_(), anyway_notify_(0) {
+            /*初始化条件变量*/
         int ret = pthread_cond_init(&condition_, 0);
 
         if (EAGAIN == ret) ASSERT(0 == EAGAIN);
@@ -52,8 +53,10 @@ class Condition {
         int ret = 0;
 
         if (!atomic_cas32(&anyway_notify_, 0, 1)) {
+            /*解锁mutex，并等待cond改变*/
             ret = pthread_cond_wait(&condition_, &(lock.internal().internal()));
         }
+
 
         anyway_notify_ = 0;
 
@@ -95,6 +98,9 @@ class Condition {
     }
 
     void notifyOne() {
+
+        /*条件改变，发送信号，通知t_b进程*/
+
         int ret = pthread_cond_signal(&condition_);
 
         if (EINVAL == ret) ASSERT(0 == EINVAL);
@@ -109,6 +115,12 @@ class Condition {
     void notifyAll(bool anywaynotify = false) {
         if (anywaynotify) anyway_notify_ = 1;
 
+        /*
+         pthread_t t_b;
+         pthread_create(&t_a,NULL,thread1,(void *)NULL);*创建进程t_a
+         pthread_create(&t_b,NULL,thread2,(void *)NULL); 创建进程t_b
+        pthread_join(t_a, NULL);等待进程t_a结束
+         */
         int ret = pthread_cond_broadcast(&condition_);
 
         if (EINVAL == ret) ASSERT(0 == EINVAL);

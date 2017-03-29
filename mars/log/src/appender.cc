@@ -149,7 +149,7 @@ static void __make_logfilename(const timeval& _tv, const std::string& _logdir, c
     strncpy(_filepath, logfilepath.c_str(), _len - 1);
     _filepath[_len - 1] = '\0';
 }
-
+#pragma mark - delete files -
 static void __del_files(const std::string& _forder_path) {
     
     boost::filesystem::path path(_forder_path);
@@ -719,6 +719,7 @@ void appender_open(TAppenderMode _mode, const char* _dir, const char* _nameprefi
     snprintf(mmap_file_path, sizeof(mmap_file_path), "%s/%s.mmap2", sg_cache_logdir.empty()?_dir:sg_cache_logdir.c_str(), _nameprefix);
 
     bool use_mmap = false;
+    //如果存在MMAP文件则打开，没有则创建并赋15k空值，然后打开
     if (OpenMmapFile(mmap_file_path, kBufferBlockLength, sg_mmmap_file))  {
         sg_log_buff = new LogBuffer(sg_mmmap_file.data(), kBufferBlockLength, true);
         use_mmap = true;

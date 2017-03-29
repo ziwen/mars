@@ -51,6 +51,7 @@ bool OpenMmapFile(const char* _filepath, unsigned int _size, boost::iostreams::m
         param.new_file_size = _size;
     }
 
+    //创建mmap2 文件，里面的内容是15k的 0000
     _mmmap_file.open(param);
 
     bool is_open = IsMmapFileOpenSucc(_mmmap_file);

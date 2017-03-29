@@ -38,8 +38,11 @@ int  xlogger_IsEnabledFor(TLogLevel _level) {
 	return __xlogger_IsEnabledFor_impl(_level);
 
 }
-
-xlogger_appender_t xlogger_SetAppender(xlogger_appender_t _appender) {
+/*
+对于test和&test你应该这样理解，test是函数的首地址，它的类型是void ()，&test表示一个指向函数test这个对象的地址，
+它的类型是void (*)()，因此test和&test所代表的地址值是一样的，但类型不一样。test是一个函数，&test表达式的值是一个指针！
+*/
+ xlogger_appender_t xlogger_SetAppender(xlogger_appender_t _appender) {
     if (NULL == &__xlogger_SetAppender_impl) { return NULL;}
     return __xlogger_SetAppender_impl(_appender);
 }
