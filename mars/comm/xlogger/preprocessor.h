@@ -152,6 +152,7 @@
 
 // for all compiler
 // #elif defined _MSC_VER
+//PP_NARG(A) 返回参数个数
 #define PP_NARG(...) PP_NARG_ ( __VA_ARGS__, PP_RSEQ_N() )
 #define PP_NARG_(...) PP_ARG_N PP_BRACKET_L() __VA_ARGS__ PP_BRACKET_R()
 #define PP_BRACKET_L() (

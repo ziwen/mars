@@ -29,6 +29,10 @@ extern "C" {
 #endif
 
 __inline int boot_run_atstartup(void (*func)(void)) { func(); return 0;}
+    
+/*
+atexit函数的用途也是比较广泛的：可以按照你予设的顺序摧毁全局变量（类），例如有个log类，你在其它的全局类里也有可能调用到Log类写日志。所以log 类必须最后被析构 。假如没有规定析构顺序，那么程序在退出时将有可能首先析构log类，那么其它的全局类在此时将无法正确写日志。 把数据写回文件, 删除临时文件, 这才是真正有用的.
+*/
 __inline int boot_run_atexit(void (*func)(void)) { return atexit(func);}
 
 #ifdef __cplusplus

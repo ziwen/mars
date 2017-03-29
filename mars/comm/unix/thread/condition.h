@@ -100,7 +100,7 @@ class Condition {
     void notifyOne() {
 
         /*条件改变，发送信号，通知t_b进程*/
-
+/*发送一个信号给另外一个正在处于阻塞等待状态的线程,使其脱离阻塞状态,继续执行.如果没有线程处在阻塞等待状态,pthread_cond_signal也会成功返回。*/
         int ret = pthread_cond_signal(&condition_);
 
         if (EINVAL == ret) ASSERT(0 == EINVAL);
@@ -114,13 +114,7 @@ class Condition {
 
     void notifyAll(bool anywaynotify = false) {
         if (anywaynotify) anyway_notify_ = 1;
-
-        /*
-         pthread_t t_b;
-         pthread_create(&t_a,NULL,thread1,(void *)NULL);*创建进程t_a
-         pthread_create(&t_b,NULL,thread2,(void *)NULL); 创建进程t_b
-        pthread_join(t_a, NULL);等待进程t_a结束
-         */
+        
         int ret = pthread_cond_broadcast(&condition_);
 
         if (EINVAL == ret) ASSERT(0 == EINVAL);
