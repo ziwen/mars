@@ -133,7 +133,7 @@ class ScopeErrno {
 #define SCOPE_ERRNO_II(line) ScopeErrno __scope_errno_##line
 
 }
-
+//生成文件的规则如下 前缀_20170401.扩展名
 static void __make_logfilename(const timeval& _tv, const std::string& _logdir, const char* _prefix, const std::string& _fileext, char* _filepath, unsigned int _len) {
     time_t sec = _tv.tv_sec;
     tm tcur = *localtime((const time_t*)&sec);
@@ -146,6 +146,7 @@ static void __make_logfilename(const timeval& _tv, const std::string& _logdir, c
     logfilepath += temp;
     logfilepath += ".";
     logfilepath += _fileext;
+    //如果n<src的长度，只是将src的前n个字符复制到dest的前n个字符，不自动添加'\0'，也就是结果dest不包括'\0'，需要再手动添加一个'\0'。如果src的长度小于n个字节，则以NULL填充dest直到复制完n个字节。src和dest所指内存区域不可以重叠且dest必须有足够的空间来容纳src的字符长度+'\0'
     strncpy(_filepath, logfilepath.c_str(), _len - 1);
     _filepath[_len - 1] = '\0';
 }

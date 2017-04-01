@@ -26,6 +26,10 @@
 
 @end
 
+/*__FILE__ 是文件绝对路径，如filetest /srv/example/c/test/LogUtil.h, 也有可能是LogUtil.h
+ *  char * strrchr(const char *str, int c); 将会找出 str 字符串中最后一次出现的字符 c 的地址，然后将该地址返回
+ * 如果希望查找某字符在字符串中第一次出现的位置，可以使用 strchr() 函数
+ */
 #define __FILENAME__ (strrchr(__FILE__,'/')+1)
 
 /**
