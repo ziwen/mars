@@ -714,6 +714,7 @@ __attribute__((__format__ (printf, 2, 3)))
 #endif
 __inline void  __xlogger_c_write(const XLoggerInfo* _info, const char* _log, ...) { xlogger_Write(_info, _log); }
 
+//调用关系 在这里
 #define xlogger2(level, tag, file, func, line, ...)      if ((!xlogger_IsEnabledFor(level)));\
 															  else { XLoggerInfo info= {level, tag, file, func, line,\
 																	 {0, 0}, -1, -1, -1};\ gettimeofday(&info.m_tv, NULL);\

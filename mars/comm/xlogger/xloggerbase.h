@@ -40,16 +40,16 @@ typedef enum {
 } TLogLevel;
 
 typedef struct XLoggerInfo_t {
-    TLogLevel level;
-    const char* tag;
-    const char* filename;
-    const char* func_name;
-    int line;
+    TLogLevel level;        // log level
+    const char* tag;        // modelName:like stn ,xlog , ''
+    const char* filename;   //  __FILENAME__,
+    const char* func_name;  // __FUNCTION__
+    int line;               //  __LINE__,
 
-    struct timeval timeval;
-    intmax_t pid;
-    intmax_t tid;
-    intmax_t maintid;
+    struct timeval timeval; //gettimeofday 取得当前时间(保存在结构体timeval中) 1970年1月1日
+    intmax_t pid;           //取得进程识别码
+    intmax_t tid;           //当前的线程，Thread
+    intmax_t maintid;       //主线程
 } XLoggerInfo;
 
 extern intmax_t xlogger_pid();

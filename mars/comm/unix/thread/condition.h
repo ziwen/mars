@@ -54,6 +54,7 @@ class Condition {
 
         if (!atomic_cas32(&anyway_notify_, 0, 1)) {
             /*解锁mutex，并等待cond改变*/
+            /* 激发条件有两种形式，pthread_cond_signal()激活一个等待该条件的线程，存在多个等待线程时按入队顺序激活其中一个；而pthread_cond_broadcast()则激活所有等待线程。*/
             ret = pthread_cond_wait(&condition_, &(lock.internal().internal()));
         }
 
@@ -73,6 +74,8 @@ class Condition {
         int ret = 0;
 
         if (!atomic_cas32(&anyway_notify_, 0, 1)) {
+            //时间到达前 触发
+             /* 激发条件有两种形式，pthread_cond_signal()激活一个等待该条件的线程，存在多个等待线程时按入队顺序激活其中一个；而pthread_cond_broadcast()则激活所有等待线程。*/
             ret = pthread_cond_timedwait(&condition_, &(lock.internal().internal()), &ts);
         }
 

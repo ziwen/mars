@@ -939,6 +939,7 @@ namespace detail
  BOOST_FILESYSTEM_DECL
   bool create_directories(const path& p, system::error_code* ec)
   {
+      //filename =log Document
     path filename(p.filename());
     if ((filename.native().size() == 1 && filename.native()[0] == dot)
       || (filename.native().size() == 2

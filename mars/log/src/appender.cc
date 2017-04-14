@@ -499,6 +499,7 @@ static void __writetips2file(const char* _tips_format, ...) {
     __log2file(tmp, len);
 }
 
+
 static void __async_log_thread() {
     while (true) {
 
@@ -513,7 +514,7 @@ static void __async_log_thread() {
 		if (NULL != tmp.Ptr())  __log2file(tmp.Ptr(), tmp.Length());
 
         if (sg_log_close) break;
-
+        //等待15min
         sg_cond_buffer_async.wait(15 * 60 *1000);
     }
 }
@@ -730,6 +731,7 @@ void appender_open(TAppenderMode _mode, const char* _dir, const char* _nameprefi
         use_mmap = false;
     }
 
+    //创建缓存失败，缓存是mmap中的数据
     if (NULL == sg_log_buff->GetData().Ptr()) {
         if (use_mmap && sg_mmmap_file.is_open())  CloseMmapFile(sg_mmmap_file);
         return;
@@ -737,6 +739,7 @@ void appender_open(TAppenderMode _mode, const char* _dir, const char* _nameprefi
 
 
     AutoBuffer buffer;
+    //将LogBuffer 刷新到AutoBuffer 双缓存更新机制
     sg_log_buff->Flush(buffer);
 
 	ScopedLock lock(sg_mutex_log_file);
